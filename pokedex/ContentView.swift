@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var search = ""
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            PokemonGridView()
         }
-        .padding()
+    }
+    
+    init() {
+        setTitleStyle()
+    }
+    
+    func setTitleStyle() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.systemBackground
+        appearance.largeTitleTextAttributes = [
+            .font: UIFont.systemFont(ofSize: 32, weight: .bold)
+            
+        ]
+        UINavigationBar.appearance().standardAppearance = appearance
     }
 }
 
